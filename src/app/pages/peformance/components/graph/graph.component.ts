@@ -64,7 +64,5 @@ export class GraphComponent implements OnInit, OnChanges {
       this.title = this.data.title;
     }
   }
-  
-
 
 }

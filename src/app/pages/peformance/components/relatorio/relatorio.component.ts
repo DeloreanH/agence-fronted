@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {  Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { IMonthlyPeformance, IUserPeformance } from '../../../../common/interfaces/peformance.interface';
 import * as moment from 'moment';

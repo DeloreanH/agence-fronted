@@ -66,9 +66,7 @@
               matTooltip="Relatorio"
               matTooltipPosition="below"
               (click)="clickRelatorio()"
-              [disabled]="form.invalid || relatorioDisabled"
-
-            >
+              [disabled]="form.invalid || relatorioDisabled">
               <mat-icon>article</mat-icon>
               <span fxHide.sm fxHide.xs> Relatorio</span>
             </button>
@@ -79,8 +77,7 @@
                 matTooltip="Gráfico"
                 matTooltipPosition="below"
                 (click)="clickGraph()"
-                [disabled]="form.invalid || graphDisabled"
-            >
+                [disabled]="form.invalid || graphDisabled">
               <mat-icon>assessment</mat-icon>
               <span fxHide.sm fxHide.xs  > Gráfico</span>
             </button>
@@ -91,8 +88,7 @@
                 matTooltip="Pizza"
                 matTooltipPosition="below"
                 (click)="clickPizza()"
-                [disabled]="form.invalid ||  pizzaDisabled"
-            >
+                [disabled]="form.invalid ||  pizzaDisabled">
               <mat-icon>pie_chart</mat-icon>
               <span fxHide.sm fxHide.xs> Pizza</span>
             </button>
