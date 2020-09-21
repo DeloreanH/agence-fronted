@@ -37,7 +37,7 @@
 mat-panel-title {
 white-space: nowrap;
     text-overflow: ellipsis;
-    width: 300px;
-    display: block;
+    width: 400px;
+    display: block !important;
     overflow: hidden;
 }

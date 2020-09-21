@@ -18,7 +18,7 @@ export class NavBarComponent {
       navigate: '/peformance'
     },
     {
-      label: 'Projetos',
+      label: 'Proyetos',
       icon: 'work',
       showOnMobile: false,
       showOnTablet: false,
