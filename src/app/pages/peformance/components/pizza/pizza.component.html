@@ -1,0 +1,12 @@
+
+<div class="content-canvas" *ngIf="data">
+  <canvas 
+    baseChart 
+    [data]="pieChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div>

@@ -1,0 +1,48 @@
+<app-loader></app-loader>
+<mat-card>
+  <mat-tab-group mat-align-tabs="center"  (selectedTabChange)="tabEvent($event)" selectedIndex="0">
+
+    <mat-tab label="Formulario">
+      <app-form
+        (dataForm)="updateDataForm($event)"
+        (relatorio)="calculateRelatorio()"
+        (pizza)="calculatePizza()"
+        (graph)="calculateGraph()"
+        [relatorioDisabled]="dataRelatorio"
+        [pizzaDisabled]="dataPizza"
+        [graphDisabled]="dataGraph">
+      </app-form>
+    </mat-tab>
+
+    <mat-tab label="Relatorio" *ngIf="dataRelatorio">
+      <ng-template matTabLabel >
+         <span matBadge="⭐️"  matBadgeColor="accent" [matBadgeHidden]="RelatorioBadget" matBadgeOverlap="false">Relatorio</span>
+      </ng-template>
+      <mat-accordion>
+        <app-relatorio *ngFor="let user of dataRelatorio.users" [user]="user" >
+        </app-relatorio>
+      </mat-accordion>
+    </mat-tab>
+    <div>
+
+    <mat-tab label="Gráfico" *ngIf="dataGraph">
+      <ng-template matTabLabel >
+         <span matBadge="⭐️"  matBadgeColor="accent" [matBadgeHidden]="graphBadget" matBadgeOverlap="false">Gráfico</span>
+      </ng-template>
+      <app-graph
+        [data]="dataGraph">
+      </app-graph>
+    </mat-tab>
+    </div>
+
+
+    <mat-tab label="Pizza" *ngIf="dataPizza">
+      <ng-template matTabLabel >
+         <span matBadge="⭐️"  matBadgeColor="accent" [matBadgeHidden]="pizzaBadget" matBadgeOverlap="false">Pizza</span>
+      </ng-template>
+      <app-pizza [data]="dataPizza">
+      </app-pizza>
+    </mat-tab>
+    
+   </mat-tab-group>
+ </mat-card>

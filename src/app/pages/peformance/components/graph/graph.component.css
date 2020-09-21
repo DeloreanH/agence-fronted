@@ -1,0 +1,10 @@
+.content-canvas {
+  display: flex;
+  justify-content: center;
+  min-width: 600px;
+  padding: 10px;
+}
+canvas {
+  max-height: 75vh !important;
+  width: auto !important;
+}

@@ -1,0 +1,55 @@
+<div class="accordion-container">
+  <mat-expansion-panel *ngIf="user"  [expanded]="expanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+      fxFlex="" fxLayoutAlign="flex-start center"
+      [matTooltip]="user.name"
+      matTooltipPosition="above">
+        <mat-icon>person</mat-icon>
+        {{ user.name }}
+      </mat-panel-title>
+      <mat-panel-description>
+
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="table-container">
+      <table  class="table-width" mat-table [dataSource]="dataSource">
+    
+        <ng-container [matColumnDef]="Fields.date_period">
+          <th mat-header-cell *matHeaderCellDef> Período </th>
+          <td mat-cell *matCellDef="let element"> {{ formatDate(element.date_period)}} </td>
+          <td mat-footer-cell *matFooterCellDef> Total </td>
+        </ng-container>
+
+        <ng-container [matColumnDef]="Fields.net_income">
+          <th mat-header-cell *matHeaderCellDef> Ingreso neto </th>
+          <td mat-cell *matCellDef="let element"> {{element.net_income | currency:'R$'}} </td>
+          <td mat-footer-cell *matFooterCellDef> {{ user.total_net_income | currency:'R$' }} </td>
+        </ng-container>
+
+        <ng-container [matColumnDef]="Fields.fixed_cost">
+          <th mat-header-cell *matHeaderCellDef> Costo fijo </th>
+          <td mat-cell *matCellDef="let element"> {{element.fixed_cost | currency:'R$'}} </td>
+          <td mat-footer-cell *matFooterCellDef> {{ user.total_fixed_cost | currency:'R$' }} </td>
+        </ng-container>
+    
+        <ng-container [matColumnDef]="Fields.commission">
+          <th mat-header-cell *matHeaderCellDef> Comisión </th>
+          <td mat-cell *matCellDef="let element"> {{element.commission | currency:'R$'}} </td>
+          <td mat-footer-cell *matFooterCellDef> {{ user.total_commission | currency:'R$' }} </td>
+        </ng-container>
+    
+        <ng-container [matColumnDef]="Fields.profit">
+          <th mat-header-cell *matHeaderCellDef> Lucro </th>
+          <td mat-cell *matCellDef="let element"> {{element.profit | currency:'R$'}} </td>
+          <td mat-footer-cell *matFooterCellDef> {{ user.total_profit | currency:'R$'  }} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+      
+      </table>
+    </div>
+  </mat-expansion-panel>
+</div>

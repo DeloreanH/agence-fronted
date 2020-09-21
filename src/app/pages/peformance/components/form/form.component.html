@@ -1,0 +1,102 @@
+<form [formGroup]="form">
+  <div class="peformance-container" fxLayout="column">
+    <!-- date pickers -->
+    <div class="date-pickers" fxFlex="" fxLayoutAlign="space-evenly" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <mat-form-field>
+          <mat-label>Desde</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="startDate" 
+          [min]="minRangeDate" [max]="maxRangeDate">
+          <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+          <mat-datepicker #picker1
+          startView="multi-year"
+          (monthSelected)="datePickerHandler($event, picker1, 'startDate')"
+          ></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hasta</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="endDate" 
+          [min]="minRangeDate" [max]="maxRangeDate">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2 
+          startView="multi-year"
+          (monthSelected)="datePickerHandler($event, picker2, 'endDate')"
+          ></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div fxFlex="" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+          <!-- Table -->
+        <div fxFlex="">
+          <div class="table-container">
+              <table class="table-width" mat-table [dataSource]="dataSource">
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()">
+                      </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                      <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? addRowToSelection(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)">
+                      </mat-checkbox>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.no_usuario}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                (click)="addRowToSelection(row)">
+                </tr>
+              </table>
+              <mat-paginator [pageSize]="5" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+        <!-- Buttons -->
+        <div  fxFlex="" fxLayout="column" fxLayout.xs="row" fxLayout.sm="row" fxLayoutAlign="center center" fxLayoutGap="1rem">
+          <button 
+              mat-raised-button 
+              color="primary" 
+              class="action-buttons"
+              matTooltip="Relatorio"
+              matTooltipPosition="below"
+              (click)="clickRelatorio()"
+              [disabled]="form.invalid || relatorioDisabled"
+
+            >
+              <mat-icon>article</mat-icon>
+              <span fxHide.sm fxHide.xs> Relatorio</span>
+            </button>
+            <button 
+                mat-raised-button 
+                color="primary" 
+                class="action-buttons"
+                matTooltip="Gráfico"
+                matTooltipPosition="below"
+                (click)="clickGraph()"
+                [disabled]="form.invalid || graphDisabled"
+            >
+              <mat-icon>assessment</mat-icon>
+              <span fxHide.sm fxHide.xs  > Gráfico</span>
+            </button>
+            <button 
+                mat-raised-button 
+                color="primary" 
+                class="action-buttons"
+                matTooltip="Pizza"
+                matTooltipPosition="below"
+                (click)="clickPizza()"
+                [disabled]="form.invalid ||  pizzaDisabled"
+            >
+              <mat-icon>pie_chart</mat-icon>
+              <span fxHide.sm fxHide.xs> Pizza</span>
+            </button>
+          </div>
+      </div>
+    </div>
+</form>
