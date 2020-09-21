@@ -21,7 +21,7 @@ export class PeformanceService extends HttpService {
   }
 
   /*
-   *  llamada al servidor para traer los datos de los usuarios seleccionados en un rango especifico
+   *  server call to fetch the data of selected users in a specific range
    */
   getUsersPeformance( users: string[], startDate: string, endDate: string ): Observable<IPeformanceCollection> {
     const params = {'users[]': users, start_date: startDate, end_date: endDate };
@@ -32,7 +32,7 @@ export class PeformanceService extends HttpService {
 
 
   /*
-   * arma la estructura final que se necesita para construir la grafica
+   * Assemble the final structure that is neededd to build the graph
    */
   createPeformanceGraph(collection: IPeformanceCollection): IGraph {
     const title = 'Rendimiento Comercial';
@@ -49,7 +49,7 @@ export class PeformanceService extends HttpService {
 
 
   /*
-   * arma la estructura final que se necesita para construir la grafica de pizza
+   * Assemble the final structure that is needed to build the pizza graph
    */
   createPeformancePizza(collection: IPeformanceCollection): IPizza {
     const title = 'Participacion por ingreso neto';
@@ -67,8 +67,8 @@ export class PeformanceService extends HttpService {
 
 
   /*
-   * Genera los intervalos de mes del rango seleccionado,
-   * se utiliza en la creacion de las series y categorias de la grafica
+   * Generates the month intervals of the selected range,
+   * it is used in the creation of the series and categories of the graph
    */
   private datePeriodsFromRange(startDate: string, endDate: string): string[] {
     const datePeriods = [];
@@ -80,8 +80,8 @@ export class PeformanceService extends HttpService {
   }
 
   /*
-   * genera las series por cada usuario en la coleccion de peformances,
-   * utilizado para crear la grafica
+   * generates the series for each user in the performance collection,
+   * used to create the graph
    */
   private getUserGraphSeries(userPeformances: IMonthlyPeformance[], datePeriods: string[]): number[]{
     const series: number[] = [];
