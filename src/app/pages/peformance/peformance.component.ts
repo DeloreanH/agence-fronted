@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoaderService } from '../../common/components/loader/loader.service';
 import { PeformanceService } from '../../core/services/peformance.service';
 import { IDataForm, IPeformanceCollection } from '../../common/interfaces/peformance.interface';
